@@ -18,8 +18,6 @@ namespace Long2short
             //但是我想想觉得一句话不说也不好.
             //ProcessShortId p = new ProcessShortId();
             //p下有两个方法，GetLongId和GetShortId，前者用于服务器请求原始链接，后者用于用户或者批量生成短链接.
-            
-            
         }
 
 
