@@ -15,7 +15,7 @@ namespace Long2short
         static void Main(string[] args)
         {
             
-        }
+       }
     }
 
     class ProcessShortId
@@ -30,7 +30,7 @@ namespace Long2short
             var collect = mongotask.InitDatabase("mongodb://127.0.0.1:27017", "long2short", "long2shortinfo");
             //mongodb://username:password@serveraddress/databaseName  如果要鉴权的话就改改.
             long RealUrlid = urlid ?? mongotask.CountList(collect);
-            bool status = mongotask.NewShortId(collect, Convert.ToInt32(RealUrlid), base62calc.ReturnShortUrl(Convert.ToInt32(RealUrlid)), LongUrl,urlid);
+            bool status = mongotask.NewShortId(collect, RealUrlid, base62calc.ReturnShortUrl(RealUrlid), LongUrl,urlid);
             if(!status)
             {
                 Console.WriteLine("Some errors occurred.");
