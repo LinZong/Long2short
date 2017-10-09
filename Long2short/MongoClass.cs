@@ -18,7 +18,7 @@ namespace Long2short
             return collection;
         }
 
-        public bool NewShortId(IMongoCollection<BsonDocument> CollectionHandler, int insertUrlId, string insertShortUrlId, string insertLongUrlId,long? UserInputId)
+        public bool NewShortId(IMongoCollection<BsonDocument> CollectionHandler, long insertUrlId, string insertShortUrlId, string insertLongUrlId,long? UserInputId)
         {
             
             var filter = Builders<BsonDocument>.Filter.Eq("id",insertUrlId);
@@ -34,11 +34,11 @@ namespace Long2short
                         var document = new BsonDocument
                     {
                     {"id",insertUrlId },
-                    {"shortid",b.ReturnShortUrl(Convert.ToInt32(insertUrlId)) },
+                    {"shortid",b.ReturnShortUrl(insertUrlId) },
                     {"longid",insertLongUrlId }
                     };
                         CollectionHandler.InsertOne(document);
-                        Console.WriteLine(b.ReturnShortUrl(Convert.ToInt32(insertUrlId)));
+                        Console.WriteLine(b.ReturnShortUrl(insertUrlId));
                         return true;
                     }
                     catch

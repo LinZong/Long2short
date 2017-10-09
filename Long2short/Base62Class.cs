@@ -8,7 +8,7 @@ namespace Long2short
 {
     class Base62Class
     {
-        Dictionary<int, char> Base62Dic = new Dictionary<int, char>();
+        Dictionary<long, char> Base62Dic = new Dictionary<long, char>();
         public Base62Class()
         {
                
@@ -30,20 +30,20 @@ namespace Long2short
                 } //52-61 is 0-9
 
         }
-        public List<int> GetBase62(int input)
+        public List<long> GetBase62(long input)
         {
             
-            List<int> Base62Value = new List<int>();
+            List<long> Base62Value = new List<long>();
             while (input > 0)
             {
-                int remain = input % 62;
+                long remain = input % 62;
                 Base62Value.Add(remain);
                 input = input / 62;
             }
             return Base62Value;
         }
 
-        public string ReturnShortUrl(int UrlId)
+        public string ReturnShortUrl(long UrlId)
         {
             
             string s = "";
