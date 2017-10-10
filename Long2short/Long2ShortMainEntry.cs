@@ -9,15 +9,6 @@ using MongoDB.Driver;
 
 namespace Long2short
 {
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            ProcessShortId p = new ProcessShortId();
-            p.GetShortId(null, "nicovideo.jp");
-        }
-    }
     public class ProcessShortId
     {
 
