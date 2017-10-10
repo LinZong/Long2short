@@ -7,18 +7,18 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 
 
-
 namespace Long2short
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            
-       }
+            ProcessShortId p = new ProcessShortId();
+            p.GetShortId(null, "nicovideo.jp");
+        }
     }
-
-    class ProcessShortId
+    public class ProcessShortId
     {
 
         //Init important components
@@ -38,13 +38,24 @@ namespace Long2short
             
         }
 
-        public BsonValue GetLongId(string shortid)
+        public bool GetLongId(string shortid,out string longid)
         {
+            
             var collect = mongotask.InitDatabase("mongodb://127.0.0.1:27017", "long2short", "long2shortinfo");
             var filter = Builders<BsonDocument>.Filter.Eq("shortid", shortid);
             var projection = Builders<BsonDocument>.Projection.Exclude("_id");
-            var document = collect.Find(filter).Project(projection).First();
-            return document[2];
+            try
+            {
+                var document = collect.Find(filter).Project(projection).First();
+                longid = Convert.ToString(document[2]);
+                return true;
+            }
+            catch (InvalidOperationException)
+            {
+                longid = "Nothing";
+                return false;
+            }
+
         }
     }
 

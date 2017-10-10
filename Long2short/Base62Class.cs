@@ -58,7 +58,7 @@ namespace Long2short
                 s = s + Base62Dic[base62result[i - 1]];
             }
             //Dic.Clear();
-            return "http://zap.tech/" + s;
+            return s;
         }
 
         //public long GetUrlId(string OriShortUrl)
